@@ -9,8 +9,8 @@ export const Navbar = () => {
       <Link to={"/"}>
         <Box>Products</Box>
       </Link>
-      <Link to={"/cart"}>
-        <Box>Cart</Box>
+      <Link to={"/addProduct"}>
+        <Box>ADD Product</Box>
       </Link>
     </Box>
   );

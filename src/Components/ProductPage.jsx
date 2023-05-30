@@ -1,18 +1,24 @@
-import { Box, Grid, GridItem, Img, Text } from "@chakra-ui/react";
-import React, { useEffect } from "react";
+import { Box, Grid, GridItem, Button, Text } from "@chakra-ui/react";
+import React, { useState,useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getData } from "../Redux/action";
 
 export function ProductPage() {
   const products = useSelector((store) => store.product.data);
+  
   const {loading, err} = useSelector((store) => store.product);
 
   const dispatch = useDispatch();
 
+  const [skip,setSkip]=useState(0);
+  // const [currentPage, setCurrentPage] = useState(1);
+  // const [productsPerPage] = useState(10);
+
   useEffect(() => {
-    dispatch(getData());
-  }, []);
+    dispatch(getData(skip));
+  }, [skip]);
+
   console.log(products);
   if (loading == true) {
     return <Box>Loading....</Box>;
@@ -50,6 +56,22 @@ export function ProductPage() {
           </Link>
         ))}
       </Grid>
+
+{/* pagination */}
+    <Box display="flex" w={["","","","20%"]} m={["auto","auto","auto","auto"]} >
+    <Button color="red" disabled={skip===0} onClick={()=>setSkip(skip-10)}>Previous</Button>
+      <Button ml="5%"  _hover={{bgColor:'black'}}  bgColor="black"  color="white">{(skip/10)+1}</Button>
+      <Button ml="5%" mb="30px" color="red"  onClick={()=>setSkip(skip+10)}>Next</Button>
     </Box>
+
+      {/* <div>
+        {Array.from({ length: Math.ceil(products.length / productsPerPage) }).map((_, index) => (
+          <button key={index} onClick={() => paginate(index + 1)}>
+            {index + 1}
+          </button>
+        ))}
+      </div> */}
+    </Box>
+
   );
 }
