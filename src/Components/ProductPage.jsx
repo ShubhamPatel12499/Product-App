@@ -12,8 +12,6 @@ export function ProductPage() {
   const dispatch = useDispatch();
 
   const [skip,setSkip]=useState(0);
-  // const [currentPage, setCurrentPage] = useState(1);
-  // const [productsPerPage] = useState(10);
 
   useEffect(() => {
     dispatch(getData(skip));
@@ -40,17 +38,18 @@ export function ProductPage() {
         {products.map((e) => (
           <Link key ={e.ProductID} to={`product/${e.ProductID}`}>
             <Box>
-              <GridItem
-                
+              <GridItem             
                 p={5}
                 borderRadius={"15px"}
-                border={"1px solid black"}
-              >
-                {/* <Img src={e.__metadata.url} m={"auto"}></Img> */}
+                border={"1px solid black"}>
                 <Text fontWeight={"bold"}>ProductID: {e.ProductID}</Text>
                 <Text fontWeight={"bold"}>ProductName: {e.ProductName}</Text>    
                 <Text>UnitPrice: {e.UnitPrice}</Text>
                 <Text>UnitsInStock: {e.UnitsInStock}</Text>
+                <Text>UnitsOnOrder: {e.UnitsOnOrder}</Text>
+                <Text>SupplierID: {e.SupplierID}</Text>
+                <Text>CategoryID: {e.CategoryID}</Text>
+                <Text>ReorderLevel: {e.ReorderLevel}</Text>            
               </GridItem>
             </Box>
           </Link>
@@ -64,13 +63,6 @@ export function ProductPage() {
       <Button ml="5%" mb="30px" color="red"  onClick={()=>setSkip(skip+10)}>Next</Button>
     </Box>
 
-      {/* <div>
-        {Array.from({ length: Math.ceil(products.length / productsPerPage) }).map((_, index) => (
-          <button key={index} onClick={() => paginate(index + 1)}>
-            {index + 1}
-          </button>
-        ))}
-      </div> */}
     </Box>
 
   );

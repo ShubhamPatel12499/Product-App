@@ -1,17 +1,13 @@
-import { Box } from "@chakra-ui/react";
 import React from "react";
 import { Link } from "react-router-dom";
+import "../Styles/Navbar.css"
 
 
 export const Navbar = () => {
   return (
-    <Box style={{ display: "flex", justifyContent: "space-around", border:"1px solid black", height:"50px", alignItems:"center" }}>
-      <Link to={"/"}>
-        <Box>Products</Box>
-      </Link>
-      <Link to={"/addProduct"}>
-        <Box>ADD Product</Box>
-      </Link>
-    </Box>
+    <div className='navbar'>
+      <Link style={{marginLeft:"30px", color:"white",textDecoration:"none"}} to={"/"} >Products</Link>
+      <Link style={{marginLeft:"30px",color:"white",textDecoration:"none"}} to={"/addProduct"}>ADD Product</Link>
+    </div>
   );
 };

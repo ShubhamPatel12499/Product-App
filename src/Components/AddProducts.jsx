@@ -1,13 +1,13 @@
-import {Box, Button, Grid, GridItem, Heading, Img, Text,Input} from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
+import {Box, Button, Text,Input} from "@chakra-ui/react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "../Styles/AddProducts.css";
 
 export const AddProducts = () => {
   const [formData,setFormData]=useState({});
   let navigate=useNavigate();
 
   const handleChange=(e)=>{
-  
       let name=e.target.name;
       let val=e.target.value;
       setFormData({...formData,[name]:val})
@@ -23,9 +23,9 @@ export const AddProducts = () => {
   
   
   return (
-    <Box>
-        <Text>Add Products</Text>
-        <form>
+    <Box>  
+       <Text fontSize="20px" marginTop={"20px"} marginBottom={"20px"}>Add Products</Text>
+        <form className="form">    
           <Input onChange={handleChange} name="ProductID" type="string" placeholder="Enter url of the product" required />
           <Input onChange={handleChange} name="ProductName" type="string" placeholder="Enter product name"/>
           <Input onChange={handleChange} name="SupplierID" type="number" placeholder="Enter supplier Id"/>
