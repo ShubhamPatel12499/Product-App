@@ -18,9 +18,9 @@ export function ProductPage() {
   }, [skip]);
 
   console.log(products);
-  if (loading == true) {
+  if (loading === true) {
     return <Box>Loading....</Box>;
-  } else if (err == true) {
+  } else if (err === true) {
     return <Box>Something went wrong...</Box>;
   }
 
@@ -58,7 +58,7 @@ export function ProductPage() {
 
 {/* pagination */}
     <Box display="flex" w={["","","","20%"]} m={["auto","auto","auto","auto"]} >
-    <Button color="red" disabled={skip===0} onClick={()=>setSkip(skip-10)}>Previous</Button>
+    <Button color="red" isDisabled={Number(skip)===0?true:false} onClick={()=>setSkip(skip-10)}>Previous</Button>
       <Button ml="5%"  _hover={{bgColor:'black'}}  bgColor="black"  color="white">{(skip/10)+1}</Button>
       <Button ml="5%" mb="30px" color="red"  onClick={()=>setSkip(skip+10)}>Next</Button>
     </Box>

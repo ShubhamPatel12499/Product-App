@@ -9,7 +9,9 @@ export const getData = (page) => async (dispatch) => {
   dispatch({ type: GET_DATA_LOADING });
   try {
     let res = await axios.get(
-      `https://services.odata.org/V2/Northwind/Northwind.svc/Products?$format=json&$skiptoken=${page}`
+      // `https://services.odata.org/V2/Northwind/Northwind.svc/Products?$format=json&$skiptoken=${page}`
+      `https://product-backend-78og.onrender.com/products?$skiptoken=${page}`
+      
     );
     console.log(res.data.d.results);
    let nproducts=[];

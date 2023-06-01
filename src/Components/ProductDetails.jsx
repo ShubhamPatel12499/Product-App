@@ -12,7 +12,10 @@ export const ProductDetails = () => {
   // console.log(products)
   async function getSingle(ProductID) {
 
-  let url = `https://services.odata.org/V2/Northwind/Northwind.svc/Products(${ProductID})?$format=json`;
+  // let url = `https://services.odata.org/V2/Northwind/Northwind.svc/Products(${ProductID})?$format=json`;
+
+  let url = `https://product-backend-78og.onrender.com/products/${ProductID}`;
+
 
   console.log(url,"url")
   try {
@@ -37,8 +40,8 @@ export const ProductDetails = () => {
       border={"1px solid black"}>
 
       <Text fontWeight={'bold'} mt={2}>ProductName: {data.ProductName}</Text> 
-      <Text mt={2}>UnitPrice: {data.UnitPrice}</Text>
-      <Text mt={2}>UnitsInStock: {data.UnitsInStock}</Text> 
+      <Text>UnitPrice: {data.UnitPrice}</Text>
+      <Text>UnitsInStock: {data.UnitsInStock}</Text> 
       <Text>UnitsOnOrder: {data.UnitsOnOrder}</Text>
       <Text>SupplierID: {data.SupplierID}</Text>
       <Text>CategoryID: {data.CategoryID}</Text>
