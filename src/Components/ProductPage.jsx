@@ -7,7 +7,7 @@ import { getData } from "../Redux/action";
 export function ProductPage() {
   const products = useSelector((store) => store.product.data);
   
-  const {loading, err} = useSelector((store) => store.product);
+  const {loading, err, addedProducts} = useSelector((store) => store.product);
 
   const dispatch = useDispatch();
 
@@ -17,15 +17,24 @@ export function ProductPage() {
     dispatch(getData(skip));
   }, [skip]);
 
-  console.log(products);
+  
   if (loading === true) {
     return <Box>Loading....</Box>;
   } else if (err === true) {
     return <Box>Something went wrong...</Box>;
   }
+  let nproducts;
+  if(skip===0){
+    nproducts=addedProducts.concat(products);
+    // nproducts.splice(10)
+  }else{
+    nproducts=products;
+  }
+  
 
   return (
     <Box>
+      <Text fontSize="20px" marginTop={"20px"}>All Products</Text>
       <Grid
         p={10}
         templateColumns={{
@@ -35,7 +44,7 @@ export function ProductPage() {
         }}
         gap={6}
       >
-        {products.map((e) => (
+        {nproducts.map((e) => (
           <Link key ={e.ProductID} to={`product/${e.ProductID}`}>
             <Box>
               <GridItem             

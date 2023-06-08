@@ -1,5 +1,6 @@
 import  axios  from "axios";
 import {
+  ADD_PRODUCT_SUCCESS,
   GET_DATA_ERROR,
   GET_DATA_LOADING,
   GET_DATA_SUCCESS,
@@ -28,4 +29,8 @@ export const getData = (page) => async (dispatch) => {
     dispatch({ type: GET_DATA_ERROR });
   }
 };
+
+export const ADD_PRODUCT=(payload)=>(dispatch)=>{
+     dispatch({type:ADD_PRODUCT_SUCCESS,payload});
+}
 

@@ -1,4 +1,5 @@
 import {
+  ADD_PRODUCT_SUCCESS,
     GET_DATA_ERROR,
     GET_DATA_LOADING,
     GET_DATA_SUCCESS,
@@ -8,6 +9,7 @@ import {
     loading: false,
     err: false,
     data: [],
+    addedProducts:[]
   };
   
   export const productReducer = (state = initialState, { type, payload }) => {
@@ -34,6 +36,12 @@ import {
           loading: false,
         };
       }
+      case ADD_PRODUCT_SUCCESS:{
+        return {
+          ...state,
+          "addedProducts":[...state.addedProducts,payload]
+        }
+      }   
       default: {
         return state;
       }
